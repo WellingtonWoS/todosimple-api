@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wellingtonwos.todosimple.models.User;
-import com.wellingtonwos.todosimple.repositories.TaskRepository;
 import com.wellingtonwos.todosimple.repositories.UserRepository;
 
 @Service
@@ -15,9 +14,6 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private TaskRepository taskRepository;
     
     public User findById(Long id){
 
@@ -30,8 +26,8 @@ public class UserService {
 
     @Transactional
     public User create (User obj){
+        
         obj = this.userRepository.save(obj);
-        this.taskRepository.saveAll(obj.getTasks());
         return obj;
 
     }
@@ -49,9 +45,13 @@ public class UserService {
 
         findById(id);
         try {
+
             this.userRepository.deleteById(id);
+
         } catch (Exception e) {
+
             throw new RuntimeException("Não é possível excluir pois há entidades relacionadas");
+            
         }
 
     }
