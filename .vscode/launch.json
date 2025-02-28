@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TodosimpreApplication<todosimpre>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.wos.todosimpre.TodosimpreApplication",
+            "projectName": "todosimpre",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
